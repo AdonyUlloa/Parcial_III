@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC\\Desktop\\Computo III\\CRUDMyApp\\Miapp\\Miapp.csproj": {}
+    "C:\\Users\\Iveth Ulloa\\Downloads\\proyecto\\Parcial_III\\Miapp\\Miapp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC\\Desktop\\Computo III\\CRUDMyApp\\Miapp\\Miapp.csproj": {
+    "C:\\Users\\Iveth Ulloa\\Downloads\\proyecto\\Parcial_III\\Miapp\\Miapp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\Desktop\\Computo III\\CRUDMyApp\\Miapp\\Miapp.csproj",
+        "projectUniqueName": "C:\\Users\\Iveth Ulloa\\Downloads\\proyecto\\Parcial_III\\Miapp\\Miapp.csproj",
         "projectName": "Miapp",
-        "projectPath": "C:\\Users\\PC\\Desktop\\Computo III\\CRUDMyApp\\Miapp\\Miapp.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\Desktop\\Computo III\\CRUDMyApp\\Miapp\\obj\\",
+        "projectPath": "C:\\Users\\Iveth Ulloa\\Downloads\\proyecto\\Parcial_III\\Miapp\\Miapp.csproj",
+        "packagesPath": "C:\\Users\\Iveth Ulloa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Iveth Ulloa\\Downloads\\proyecto\\Parcial_III\\Miapp\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Iveth Ulloa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -95,12 +91,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.12, 5.0.12]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -109,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

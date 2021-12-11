@@ -15,5 +15,7 @@ namespace Miapp.Models
         public string telefono;
 
         public string direccion;
+
+        public string estado;
     } 
 }
