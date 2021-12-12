@@ -1,17 +1,22 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+using webAPIParcial.Data;
 
-namespace Miapp
+namespace webAPIParcial
 {
     public class Startup
     {
@@ -25,63 +30,45 @@ namespace Miapp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddDbContext<DatabaseContext>(options =>
+                    options.UseNpgsql(Configuration.GetConnectionString("DatabaseContext")));
 
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "webAPIParcial", Version = "v1" });
 
+                //Localizar archivo xml generado por ASP.NET
+                var xmlFile =$"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 
-            services.AddDbContext<MunicipalityContext>(options =>
-                    options.UseNpgsql(Configuration.GetConnectionString("MunicipalityContext")));
-
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                    .AddDefaultUI()
-                    .AddEntityFrameworkStores<MunicipalityContext>()
-                    .AddDefaultTokenProviders();
-
-
-            services.ConfigureApplicationCookie(options=>{
-                options.LoginPath="/Login";
-                options.AccessDeniedPath="/AccessDenied";
-                options.SlidingExpiration=true;
-        });
-
-            services.AddRazorPages(options=>{
-                options.Conventions.AddAreaPageRoute("Identity","/Account/Login","/Login");
-                options.Conventions.AddAreaPageRoute("Identity","/Account/Register","/Register");
-                options.Conventions.AddAreaPageRoute("Identity","/Account/AccessDenied","/AccessDenied");
-
+                //Le decimos a swagger que utilice los comentarios del archivo xml
+                c.IncludeXmlComments(xmlPath,includeControllerXmlComments:true);
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment() || env.IsProduction() )
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>{
+                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "webAPIParcial v1");
+                 c.DocumentTitle = "Programación Computacional I - Web API Parcial";
+            });
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseDefaultFiles();
 
             app.UseRouting();
 
-            app.UseStatusCodePages();
-
-            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                    endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }
