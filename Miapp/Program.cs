@@ -1,26 +1,33 @@
-using System;
+﻿using System;
+using System.Net.Http;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
-namespace webAPIParcial
+namespace clientAPI
 {
-    public class Program
+    class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            getMunicipio();
+            Console.ReadKey();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        static void getMunicipio()
+        {
+            ClientAPI client =new ClientAPI();
+            HttpResponseMessage httpResponseMessage = client.Find("Municipio").Result;
+            List<Municipio> municipio = httpResponseMessage.Content.ReadAsAsync<List<Municipio>>().Result;
+            Console.WriteLine("Municipio");
+
+            foreach(Municipio mun in municipio)
+            {
+                Console.WriteLine("ID: " + mun.municipioID);
+                Console.WriteLine("Nombre: " + mun.nombre);
+                Console.WriteLine("Poblacion: " + mun.poblacion);
+                Console.WriteLine("Latitud: " + mun.latitud);
+                Console.WriteLine("Longitud: " + mun.longitud);
+            }
+
+        }
     }
 }
