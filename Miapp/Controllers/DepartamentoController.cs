@@ -86,10 +86,17 @@ namespace webAPIParcial.Controllers
             }
             return CreatedAtAction("GetMunicipioID", new{id=departamento.DepartamentoId}, departamento);
         }
-        /// <summary>
-        /// Delete para borrar Departamento
+      /// <summary>
+        /// Borrar un departamento
         ///</summary>
+        ///<remarks>
+        /// Se utiliza para borrar un departamento
+        ///</remarks>
+        /// <param name="id">ID (IdDepartamento) del objeto</param>
+        /// <response code="200">Ok. Se devuelve el objeto solicitado</response>
+        /// <response code="404">Error. No se encontró el objeto :c</response>
         [HttpDelete("id:int")]
+
          public async Task<ActionResult<Departamento>> DeleteDepartamento(int id)
          {
              var departamento = await _context.Departamentos.FindAsync(id);
