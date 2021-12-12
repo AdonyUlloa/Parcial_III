@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC\\Desktop\\Computo III\\webAPIParcial\\webAPIParcial.csproj": {}
+    "C:\\Users\\PC\\Desktop\\Computo III\\CRUDMyApp\\Miapp\\webAPIParcial.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC\\Desktop\\Computo III\\webAPIParcial\\webAPIParcial.csproj": {
+    "C:\\Users\\PC\\Desktop\\Computo III\\CRUDMyApp\\Miapp\\webAPIParcial.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\Desktop\\Computo III\\webAPIParcial\\webAPIParcial.csproj",
+        "projectUniqueName": "C:\\Users\\PC\\Desktop\\Computo III\\CRUDMyApp\\Miapp\\webAPIParcial.csproj",
         "projectName": "webAPIParcial",
-        "projectPath": "C:\\Users\\PC\\Desktop\\Computo III\\webAPIParcial\\webAPIParcial.csproj",
+        "projectPath": "C:\\Users\\PC\\Desktop\\Computo III\\CRUDMyApp\\Miapp\\webAPIParcial.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\Desktop\\Computo III\\webAPIParcial\\obj\\",
+        "outputPath": "C:\\Users\\PC\\Desktop\\Computo III\\CRUDMyApp\\Miapp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
