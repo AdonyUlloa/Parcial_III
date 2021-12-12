@@ -31,7 +31,7 @@ namespace webAPIParcial.Controllers
         ///<remarks>
         /// Aqui se optienen todos los Departamentos Guardados
         ///</remarks>
-        /// <response code="200">Ok. Se devuelve el objeto solicitado</response>
+        /// <response code="200">Ok. Se devuelve el objeto solicitado por el usuario</response>
         /// <response code="404">Error. No se encontro el objeto :c</response>
 
         [HttpGet]
